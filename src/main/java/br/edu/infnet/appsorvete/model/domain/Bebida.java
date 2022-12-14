@@ -31,7 +31,7 @@ public class Bebida extends Alimento {
 		sb.append(";");
 		sb.append(tamanho);
 		sb.append(";");
-		sb.append(alcoolico);
+		sb.append(alcoolico ? "cerveja" : "refri");
 		sb.append(";");
 		
 		return sb.toString();
