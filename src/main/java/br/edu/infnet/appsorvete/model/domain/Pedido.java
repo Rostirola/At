@@ -28,6 +28,12 @@ public class Pedido {
 	public void setDinheiro(boolean dinheiro) {
 		this.dinheiro = dinheiro;
 	}
+	
+	public void imprimir() {
+		System.out.println("Pedido: " + this);
+		System.out.println("Qtde Alimentos: " + alimentos.size());
+		System.out.println("Cliente: " + cliente);
+	}
 
 	public Pedido() {
 
