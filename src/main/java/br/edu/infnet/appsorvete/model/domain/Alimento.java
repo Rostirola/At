@@ -1,12 +1,23 @@
 package br.edu.infnet.appsorvete.model.domain;
 
+import br.edu.infnet.appsorvete.model.exceptions.PrecoZeradoException;
+
 public abstract class Alimento {
 
 	private float preco;
 	private String sabor;
 	private int quantidade;
 	
-	public Alimento(float preco, String sabor, int quantidade) {
+	public Alimento(float preco, String sabor, int quantidade) throws PrecoZeradoException {
+		
+		if(preco == 0) {
+			 throw new PrecoZeradoException("O preco esta zerado!");
+		}
+		
+		if(preco < 0) {
+			 throw new PrecoZeradoException("O preco esta negativo!");
+		}
+		
 		this.preco = preco;
 		this.sabor = sabor;
 		this.quantidade = quantidade;

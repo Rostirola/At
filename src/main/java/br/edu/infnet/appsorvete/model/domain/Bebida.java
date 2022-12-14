@@ -1,5 +1,7 @@
 package br.edu.infnet.appsorvete.model.domain;
 
+import br.edu.infnet.appsorvete.model.exceptions.PrecoZeradoException;
+
 public class Bebida extends Alimento {
 
 	
@@ -7,7 +9,7 @@ public class Bebida extends Alimento {
 	private int tamanho;
 	private boolean alcoolico;
 	
-	public Bebida(float preco, String sabor, int quantidade, String marca) {
+	public Bebida(float preco, String sabor, int quantidade, String marca) throws PrecoZeradoException {
 		super(preco, sabor, quantidade);
 		this.marca = marca;
 	}

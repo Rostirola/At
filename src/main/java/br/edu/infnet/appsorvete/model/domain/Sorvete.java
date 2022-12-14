@@ -1,12 +1,14 @@
 package br.edu.infnet.appsorvete.model.domain;
 
+import br.edu.infnet.appsorvete.model.exceptions.PrecoZeradoException;
+
 public class Sorvete extends Alimento {
 
 	private String tipo;
 	private int tamanho;
 	private boolean tooping;
 	
-	public Sorvete(float preco, String sabor, int quantidade, String tipo) {
+	public Sorvete(float preco, String sabor, int quantidade, String tipo) throws PrecoZeradoException {
 		super(preco, sabor, quantidade);
 		this.tipo = tipo;
 	}

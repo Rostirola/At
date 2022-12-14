@@ -1,12 +1,14 @@
 package br.edu.infnet.appsorvete.model.domain;
 
+import br.edu.infnet.appsorvete.model.exceptions.PrecoZeradoException;
+
 public class Milkshake extends Alimento {
 
 	private int tamanho;
 	private boolean especial;
 	private boolean chantily;
 	
-	public Milkshake(float preco, String sabor, int quantidade, int tamanho) {
+	public Milkshake(float preco, String sabor, int quantidade, int tamanho) throws PrecoZeradoException {
 		super(preco, sabor, quantidade);
 		this.tamanho = tamanho;
 	}
