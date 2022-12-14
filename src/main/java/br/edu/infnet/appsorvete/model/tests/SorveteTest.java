@@ -6,20 +6,20 @@ public class SorveteTest {
 
 	public static void main(String[] args) {
 		
-		Sorvete s1 = new Sorvete();
-		s1.set
-		s1.set
-		s1.set
+		Sorvete s1 = new Sorvete(5, "misto", 1, "casquinha");
+		s1.setTamanho(300);
+		s1.setTooping(true);
+		System.out.println(s1);
 		
-		Sorvete s1 = new Sorvete();
-		s2.set
-		s2.set
-		s2.set
+		Sorvete s2 = new Sorvete(8, "natagoiaba", 3, "cascao");
+		s2.setTamanho(500);
+		s2.setTooping(true);
+		System.out.println(s2);
 		
-		Sorvete s1 = new Sorvete();
-		s3.set
-		s3.set
-		s3.set
+		Sorvete s3 = new Sorvete(8, "acaibanana", 12, "cascao");
+		s3.setTamanho(500);
+		s3.setTooping(false);
+		System.out.println(s3);
 		
 	}
 }

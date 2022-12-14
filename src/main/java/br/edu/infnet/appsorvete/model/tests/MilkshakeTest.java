@@ -6,20 +6,20 @@ public class MilkshakeTest {
 
 	public static void main(String[] args) {
 		
-		Milkshake m1 = new Milkshake();
-		m1.set
-		m1.set
-		m1.set
+		Milkshake m1 = new Milkshake(12, "morango", 3, 500);
+		m1.setEspecial(false);
+		m1.setChantily(true);
+		System.out.println(m1);
 		
-		Milkshake m1 = new Milkshake();
-		m2.set
-		m2.set
-		m2.set
+		Milkshake m2 = new Milkshake(8, "napolitano", 5, 300);
+		m2.setEspecial(false);
+		m2.setChantily(true);
+		System.out.println(m2);
 		
-		Milkshake m1 = new Milkshake();
-		m3.set
-		m3.set
-		m3.set
+		Milkshake m3 = new Milkshake(20, "nutella", 1, 1000);
+		m3.setEspecial(true);
+		m3.setChantily(false);
+		System.out.println(m3);
 		
 	}
 }
