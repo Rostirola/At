@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import br.edu.infnet.appsorvete.model.exceptions.PedidoSemAlimentoException;
+import br.edu.infnet.appsorvete.model.exceptions.PedidoSemSolicitanteException;
+
 public class Pedido {
 
 	private String comentario;
@@ -33,9 +36,24 @@ public class Pedido {
 		System.out.println("Pedido: " + this);
 		System.out.println("Qtde Alimentos: " + alimentos.size());
 		System.out.println("Cliente: " + cliente);
+		System.out.println("Alimentos: ");
+		for(Alimento a : alimentos) {
+		System.out.println(" - " + a.getSabor());
+		}
 	}
 
-	public Pedido() {
+	public Pedido(Cliente cliente, List<Alimento> alimentos) throws PedidoSemSolicitanteException, PedidoSemAlimentoException {
+		
+		if(cliente == null) {
+			throw new PedidoSemSolicitanteException("Não existe nenhum cliente associado ao pedido!");
+		}
+		
+		if(alimentos == null) {
+			throw new PedidoSemAlimentoException("Não existe nenhum alimento associado ao pedido!");
+		}
+		
+		this.cliente = cliente;
+		this.alimentos = alimentos;
 
 		data = LocalDateTime.now();
 	}
@@ -62,16 +80,8 @@ public class Pedido {
 		return cliente;
 	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
 	public List<Alimento> getAlimentos() {
 		return alimentos;
-	}
-
-	public void setAlimentos(List<Alimento> alimentos) {
-		this.alimentos = alimentos;
 	}
 
 	public LocalDateTime getData() {

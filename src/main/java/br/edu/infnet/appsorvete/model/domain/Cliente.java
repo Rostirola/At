@@ -1,5 +1,7 @@
 package br.edu.infnet.appsorvete.model.domain;
 
+import br.edu.infnet.appsorvete.model.exceptions.ClienteInvalidoException;
+
 public class Cliente {
 
 	private String nome;
@@ -10,7 +12,21 @@ public class Cliente {
 	
 	
 	
-	public Cliente(String nome, int cpf, int idade, String email, boolean genero) {
+	public Cliente(String nome, int cpf, int idade, String email, boolean genero) throws ClienteInvalidoException {
+		
+		if(nome == null) {
+			throw new ClienteInvalidoException("O nome do cliente deve ser preenchido");
+		}
+		if(cpf < 100000000) {
+			throw new ClienteInvalidoException("O CPF do cliente deve ser preenchido");
+		}
+		if(idade < 0) {
+			throw new ClienteInvalidoException("O idade do cliente deve ser preenchido");
+		}
+		if(email == null) {
+			throw new ClienteInvalidoException("O e-mail do cliente deve ser preenchido");
+		}
+		
 		this.nome = nome;
 		this.cpf = cpf;
 		this.idade = idade;

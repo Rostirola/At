@@ -9,6 +9,9 @@ import br.edu.infnet.appsorvete.model.domain.Cliente;
 import br.edu.infnet.appsorvete.model.domain.Milkshake;
 import br.edu.infnet.appsorvete.model.domain.Pedido;
 import br.edu.infnet.appsorvete.model.domain.Sorvete;
+import br.edu.infnet.appsorvete.model.exceptions.ClienteInvalidoException;
+import br.edu.infnet.appsorvete.model.exceptions.PedidoSemAlimentoException;
+import br.edu.infnet.appsorvete.model.exceptions.PedidoSemSolicitanteException;
 import br.edu.infnet.appsorvete.model.exceptions.PrecoZeradoException;
 
 public class PedidoTest {
@@ -18,9 +21,6 @@ public class PedidoTest {
 		List<Alimento> alimentoP1 = new ArrayList<Alimento>();
 		List<Alimento> alimentoP2 = new ArrayList<Alimento>();
 		List<Alimento> alimentoP3 = new ArrayList<Alimento>();
-		
-		Cliente c1 = new Cliente("Juan", 947392017, 22, "juan@gmail.com", true);
-		Cliente c3 = new Cliente("Elbert", 985743029, 30, "elbert@gmail.com", true);
 		
 		try {
 			Bebida b1 = new Bebida(12, "cola", 1, "cocacola");
@@ -107,26 +107,32 @@ public class PedidoTest {
 			System.out.println("[ERRO}" + e.getMessage());
 		}
 		
-		Pedido p1 = new Pedido();
+		try {
+		Pedido p1 = new Pedido(new Cliente("Juan", 947392017, 22, "juan@gmail.com", true), alimentoP1);
 		p1.setComentario("Primeiro pedido");
-		p1.setCliente(c1);
 		p1.setDinheiro(false);
-		p1.setAlimentos(alimentoP1);
 		p1.imprimir();
+		} catch (ClienteInvalidoException | PedidoSemSolicitanteException | PedidoSemAlimentoException e) {
+			System.out.println("[ERRO]" + e.getMessage());
+		}
 
-		Pedido p2 = new Pedido();
+		try {
+		Pedido p2 = new Pedido(new Cliente("Juan", 947392017, 22, "juan@gmail.com", true), alimentoP2);
 		p2.setComentario("Segundo pedido");
-		p2.setCliente(c1);
 		p2.setDinheiro(true);
-		p2.setAlimentos(alimentoP2);
 		p2.imprimir();
+		} catch (ClienteInvalidoException | PedidoSemSolicitanteException | PedidoSemAlimentoException e) {
+			System.out.println("[ERRO]" + e.getMessage());
+		}
 
-		Pedido p3 = new Pedido();
+		try {
+		Pedido p3 = new Pedido(new Cliente("Elbert", 10, -30, null, true), alimentoP3);
 		p3.setComentario("Terceiro pedido");
-		p3.setCliente(c3);
 		p3.setDinheiro(false);
-		p3.setAlimentos(alimentoP3);
 		p3.imprimir();
+		} catch (ClienteInvalidoException | PedidoSemSolicitanteException | PedidoSemAlimentoException e) {
+			System.out.println("[ERRO]" + e.getMessage());
+		}
 		
 	}
 }

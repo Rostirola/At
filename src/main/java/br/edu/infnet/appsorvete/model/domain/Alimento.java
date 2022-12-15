@@ -1,6 +1,7 @@
 package br.edu.infnet.appsorvete.model.domain;
 
 import br.edu.infnet.appsorvete.model.exceptions.PrecoZeradoException;
+import br.edu.infnet.appsorvete.model.exceptions.TamanhoBebidaInvalidoException;
 
 public abstract class Alimento {
 
@@ -23,7 +24,7 @@ public abstract class Alimento {
 		this.quantidade = quantidade;
 	}
 	
-	public abstract float calcularValorVenda();
+	public abstract float calcularValorVenda() throws TamanhoBebidaInvalidoException;
 	
 	@Override
 	public String toString() {
