@@ -7,7 +7,7 @@ import br.edu.infnet.appsorvete.model.exceptions.TamanhoBebidaInvalidoException;
 public class BebidaTest {
 
 	public static void main(String[] args) {
-		
+
 		try {
 			Bebida b1 = new Bebida(12, "cola", 1, "cocacola");
 			b1.setTamanho(500);
@@ -17,7 +17,7 @@ public class BebidaTest {
 		} catch (TamanhoBebidaInvalidoException | PrecoZeradoException e) {
 			System.out.println("[ERRO}" + e.getMessage());
 		}
-		
+
 		try {
 			Bebida b2 = new Bebida(0, "chopp", 5, "brahma");
 			b2.setTamanho(200);
@@ -36,6 +36,6 @@ public class BebidaTest {
 		} catch (TamanhoBebidaInvalidoException | PrecoZeradoException e) {
 			System.out.println("[ERRO}" + e.getMessage());
 		}
-		
+
 	}
 }

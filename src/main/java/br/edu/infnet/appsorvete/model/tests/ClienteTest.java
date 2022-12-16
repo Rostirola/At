@@ -10,21 +10,21 @@ public class ClienteTest {
 		
 		try {
 			Cliente c1 = new Cliente("Juan", 947392017, 22, "juan@gmail.com", true);
-			System.out.print(c1);
+			System.out.println(c1);
 		} catch (ClienteInvalidoException e) {
 			System.out.println("[ERRO}" + e.getMessage());
 		}
 		
 		try {
 		Cliente c2 = new Cliente(null, 938503783, 17, "juliana@gmail.com", false);
-		System.out.print(c2);
+		System.out.println(c2);
 		} catch (ClienteInvalidoException e) {
 			System.out.println("[ERRO}" + e.getMessage());
 		}
 		
 		try {
 		Cliente c3 = new Cliente("Elbert", 10, -30, null, true);
-		System.out.print(c3);
+		System.out.println(c3);
 		} catch (ClienteInvalidoException e) {
 			System.out.println("[ERRO}" + e.getMessage());
 		}

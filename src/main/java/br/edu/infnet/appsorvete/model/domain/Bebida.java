@@ -7,7 +7,7 @@ public class Bebida extends Alimento {
 
 	
 	private String marca;
-	private int tamanho;
+	private float tamanho;
 	private boolean alcoolico;
 	
 	public Bebida(float preco, String sabor, int quantidade, String marca) throws PrecoZeradoException {
@@ -18,7 +18,7 @@ public class Bebida extends Alimento {
 	@Override
 	public float calcularValorVenda() throws TamanhoBebidaInvalidoException {
 		
-		if(tamanho < 300) {
+		if(tamanho < 0.3) {
 			throw new TamanhoBebidaInvalidoException ("O tamanho da bebida está inválido!");
 		}
 		
@@ -50,7 +50,7 @@ public class Bebida extends Alimento {
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
-	public int getTamanho() {
+	public float getTamanho() {
 		return tamanho;
 	}
 	public void setTamanho(int tamanho) {

@@ -1,6 +1,8 @@
 package br.edu.infnet.appsorvete.model.domain;
 
 import br.edu.infnet.appsorvete.model.exceptions.PrecoZeradoException;
+import br.edu.infnet.appsorvete.model.exceptions.TamanhoBebidaInvalidoException;
+import br.edu.infnet.appsorvete.model.exceptions.TamanhoSorveteInvalidoException;
 
 public class Sorvete extends Alimento {
 
@@ -14,7 +16,11 @@ public class Sorvete extends Alimento {
 	}
 	
 	@Override
-	public float calcularValorVenda() {
+	public float calcularValorVenda() throws TamanhoSorveteInvalidoException {
+		
+		if(tamanho < 200) {
+			throw new TamanhoSorveteInvalidoException ("O tamanho do sorvete está inválido!");
+		}
 		
 		float temTooping = tooping ? 3 : 0;
 		float valorTamanho = tamanho * 0.05f;

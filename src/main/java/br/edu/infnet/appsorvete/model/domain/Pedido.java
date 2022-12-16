@@ -41,6 +41,11 @@ public class Pedido {
 		System.out.println(" - " + a.getSabor());
 		}
 	}
+	
+	public String obterLinha() {
+		
+		return this.getComentario() + ";" + this.getCliente() + ";" + this.getAlimentos().size() + "\r\n";
+	}
 
 	public Pedido(Cliente cliente, List<Alimento> alimentos) throws PedidoSemSolicitanteException, PedidoSemAlimentoException {
 		
