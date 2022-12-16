@@ -47,7 +47,6 @@ public class Cliente {
 		sb.append(email);
 		sb.append(";");
 		sb.append(genero);
-		sb.append(";");
 		
 		return sb.toString();
 	}	

@@ -20,69 +20,74 @@ import br.edu.infnet.appsorvete.model.exceptions.PedidoSemSolicitanteException;
 import br.edu.infnet.appsorvete.model.exceptions.PrecoZeradoException;
 
 public class ArquivoTest {
-	
+
 	public static void main(String[] args) {
-		
+
 		try {
 			String arq = "arquivo.txt";
-			
+
 			try {
-				
+
 				FileReader fileR = new FileReader(arq);
 				BufferedReader leitura = new BufferedReader(fileR);
-				
-				FileWriter fileW = new FileWriter ("out_" + arq);
-				BufferedWriter escrita = new BufferedWriter (fileW);
-				
+
+				FileWriter fileW = new FileWriter("out_" + arq);
+				BufferedWriter escrita = new BufferedWriter(fileW);
+
 				String linha = leitura.readLine();
-				
+
 				String[] campos = null;
-				
+
 				List<Alimento> alimentos = new ArrayList<Alimento>();
 				Pedido pedido = null;
-				Sorvete sorvete = null;
-				Milkshake milkshake = null;
-				Bebida bebida = null;
-				
-				while(linha != null) {
-					
+
+				while (linha != null) {
+
 					campos = linha.split(";");
-					
+
 					switch (campos[0].toUpperCase()) {
-					case "P": 
+					case "P":
 						try {
-							pedido = new Pedido(new Cliente(campos[3], Integer.valueOf(campos[4]), Integer.valueOf(campos[5]), campos[6], Boolean.valueOf(campos[7])), alimentos);
+							pedido = new Pedido(new Cliente(campos[3], Integer.valueOf(campos[4]),
+									Integer.valueOf(campos[5]), campos[6], Boolean.valueOf(campos[7])), alimentos);
 							pedido.setComentario(campos[1]);
 							pedido.setDinheiro(Boolean.valueOf(campos[2]));
-							} catch (ClienteInvalidoException | PedidoSemSolicitanteException | PedidoSemAlimentoException e) {
-								System.out.println("[ERRO]" + e.getMessage());
-							}
+						} catch (ClienteInvalidoException | PedidoSemSolicitanteException
+								| PedidoSemAlimentoException e) {
+							System.out.println("[ERRO]" + e.getMessage());
+						}
 
 						break;
-					case "S" :
+					case "S":
 						try {
-							sorvete = new Sorvete(Float.valueOf(campos[1]),campos[2],Integer.valueOf(campos[3]),campos[4]);
+							Sorvete sorvete = new Sorvete(Float.valueOf(campos[1]), campos[2],
+									Integer.valueOf(campos[3]), campos[4]);
 							sorvete.setTamanho(Integer.valueOf(campos[5]));
 							sorvete.setTooping(Boolean.valueOf(campos[6]));
+							alimentos.add(sorvete);
 						} catch (PrecoZeradoException e) {
 							System.out.println("[ERRO}" + e.getMessage());
 						}
 
 						break;
-					case "M" :
+					case "M":
 						try {
-							milkshake = new Milkshake(Float.valueOf(campos[1]),campos[2],Integer.valueOf(campos[3]),Integer.valueOf(campos[4]));
+							Milkshake milkshake = new Milkshake(Float.valueOf(campos[1]), campos[2],
+									Integer.valueOf(campos[3]), Integer.valueOf(campos[4]));
 							milkshake.setEspecial(Boolean.valueOf(campos[5]));
 							milkshake.setChantily(Boolean.valueOf(campos[6]));
+							alimentos.add(milkshake);
 						} catch (PrecoZeradoException e) {
 							System.out.println("[ERRO}" + e.getMessage());
 						}
 						break;
-					case "B" :
+					case "B":
 						try {
-							bebida = new Bebida(Float.valueOf(campos[1]),campos[2],Integer.valueOf(campos[3]),campos[4]);
+							Bebida bebida = new Bebida(Float.valueOf(campos[1]), campos[2], Integer.valueOf(campos[3]),
+									campos[4]);
 							bebida.setTamanho(Integer.valueOf(campos[5]));
 							bebida.setAlcoolico(Boolean.valueOf(campos[6]));
+							alimentos.add(bebida);
 						} catch (PrecoZeradoException e) {
 							System.out.println("[ERRO}" + e.getMessage());
 						}
@@ -91,14 +96,18 @@ public class ArquivoTest {
 						System.out.println("Registro inválido!!!");
 						break;
 					}
-					
+
 					linha = leitura.readLine();
 				}
-				
+
+				if (pedido != null) {
+					escrita.write(pedido.obterLinha());
+				}
+
 				escrita.write(pedido.obterLinha());
-				
+
 				escrita.close();
-				
+
 				leitura.close();
 				fileR.close();
 			} catch (IOException e) {
@@ -107,11 +116,7 @@ public class ArquivoTest {
 		} finally {
 			System.out.println("Processamento realizado com sucesso!");
 		}
-		
-		
-		
-		
-	
+
 	}
 
 }

@@ -1,7 +1,6 @@
 package br.edu.infnet.appsorvete.model.domain;
 
 import br.edu.infnet.appsorvete.model.exceptions.PrecoZeradoException;
-import br.edu.infnet.appsorvete.model.exceptions.TamanhoBebidaInvalidoException;
 import br.edu.infnet.appsorvete.model.exceptions.TamanhoSorveteInvalidoException;
 
 public class Sorvete extends Alimento {
